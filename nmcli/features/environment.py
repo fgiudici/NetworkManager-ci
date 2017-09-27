@@ -811,6 +811,10 @@ def after_scenario(context, scenario):
         else:
             print("WARNING: 20M size exceeded in /tmp/network-traffic.log, skipping")
 
+        print("Checking firewall-cmd --state")
+        os.system("firewall-cmd --state")
+        print("firewall-cmd --state done")
+
         if 'netservice' in scenario.tags:
             # Attach network.service journalctl logs
             os.system("echo '~~~~~~~~~~~~~~~~~~~~~~~~~~ NETWORK SRV LOG ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~' > /tmp/journal-netsrv.log")
